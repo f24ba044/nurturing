@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing.csproj": {}
+    "C:\\Users\\ryugo\\Source\\Repos\\nurturing\\nurturing\\nurturing\\nurturing.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing.csproj": {
+    "C:\\Users\\ryugo\\Source\\Repos\\nurturing\\nurturing\\nurturing\\nurturing.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing.csproj",
+        "projectUniqueName": "C:\\Users\\ryugo\\Source\\Repos\\nurturing\\nurturing\\nurturing\\nurturing.csproj",
         "projectName": "nurturing",
-        "projectPath": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing.csproj",
+        "projectPath": "C:\\Users\\ryugo\\Source\\Repos\\nurturing\\nurturing\\nurturing\\nurturing.csproj",
         "packagesPath": "C:\\Users\\ryugo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\obj\\",
+        "outputPath": "C:\\Users\\ryugo\\Source\\Repos\\nurturing\\nurturing\\nurturing\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

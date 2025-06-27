@@ -28,19 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            title_label = new Label();
-            textBox1 = new TextBox();
+            Label title_label;
+            name_textBox = new TextBox();
             status_label = new Label();
             pictureBox1 = new PictureBox();
             name_label = new Label();
             pictureBox2 = new PictureBox();
             pictureBox3 = new PictureBox();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
-            radioButton3 = new RadioButton();
+            Sum_radioButton = new RadioButton();
+            FlameReaver_radioButton = new RadioButton();
+            Pollux_radioButton = new RadioButton();
             select_btn = new Button();
             label1 = new Label();
             character_label = new Label();
+            title_label = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
@@ -48,94 +49,116 @@
             // 
             // title_label
             // 
-            title_label.Font = new Font("游ゴシック Light", 30F);
+            title_label.BackColor = Color.Transparent;
+            title_label.Font = new Font("HGS創英角ﾎﾟｯﾌﾟ体", 30F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            title_label.ForeColor = Color.White;
             title_label.Location = new Point(12, 9);
             title_label.Name = "title_label";
             title_label.Size = new Size(776, 62);
             title_label.TabIndex = 0;
-            title_label.Text = "育成アプリ";
+            title_label.Text = "壊滅スターレイル";
             title_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // textBox1
+            // name_textBox
             // 
-            textBox1.Font = new Font("游ゴシック Light", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            textBox1.Location = new Point(12, 97);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(210, 32);
-            textBox1.TabIndex = 1;
+            name_textBox.Font = new Font("HGS創英角ﾎﾟｯﾌﾟ体", 9F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            name_textBox.Location = new Point(12, 97);
+            name_textBox.Name = "name_textBox";
+            name_textBox.PlaceholderText = "名前を入力";
+            name_textBox.Size = new Size(210, 22);
+            name_textBox.TabIndex = 1;
             // 
             // status_label
             // 
-            status_label.Font = new Font("游ゴシック Light", 9F);
-            status_label.Location = new Point(482, 71);
+            status_label.BackColor = Color.Transparent;
+            status_label.Font = new Font("HGP創英角ﾎﾟｯﾌﾟ体", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
+            status_label.ForeColor = Color.White;
+            status_label.Location = new Point(580, 71);
             status_label.Name = "status_label";
-            status_label.Size = new Size(306, 58);
+            status_label.Size = new Size(208, 58);
             status_label.TabIndex = 2;
             status_label.Text = "ステータス";
             // 
             // pictureBox1
             // 
+            pictureBox1.Image = Properties.Resources.サム;
             pictureBox1.Location = new Point(70, 150);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(150, 200);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             // 
             // name_label
             // 
             name_label.AutoSize = true;
-            name_label.Font = new Font("游ゴシック Light", 9F);
+            name_label.BackColor = Color.Transparent;
+            name_label.Font = new Font("HG創英角ﾎﾟｯﾌﾟ体", 9F, FontStyle.Underline, GraphicsUnit.Point, 128);
+            name_label.ForeColor = Color.Black;
             name_label.Location = new Point(12, 74);
             name_label.Name = "name_label";
-            name_label.Size = new Size(39, 19);
+            name_label.Size = new Size(87, 15);
             name_label.TabIndex = 4;
-            name_label.Text = "名前";
+            name_label.Text = "プレイヤー";
             // 
             // pictureBox2
             // 
+            pictureBox2.Image = Properties.Resources.フレイムスティーラー;
             pictureBox2.Location = new Point(330, 150);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(150, 200);
+            pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
+            pictureBox3.Image = Properties.Resources.ボリュクス;
             pictureBox3.Location = new Point(580, 150);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(150, 200);
+            pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 6;
             pictureBox3.TabStop = false;
             // 
-            // radioButton1
+            // Sum_radioButton
             // 
-            radioButton1.Location = new Point(70, 356);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(150, 26);
-            radioButton1.TabIndex = 8;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
-            radioButton1.UseVisualStyleBackColor = true;
+            Sum_radioButton.BackColor = SystemColors.ControlText;
+            Sum_radioButton.ForeColor = Color.White;
+            Sum_radioButton.Location = new Point(70, 356);
+            Sum_radioButton.Name = "Sum_radioButton";
+            Sum_radioButton.Size = new Size(150, 26);
+            Sum_radioButton.TabIndex = 8;
+            Sum_radioButton.TabStop = true;
+            Sum_radioButton.Text = "「星核ハンター」サム";
+            Sum_radioButton.UseVisualStyleBackColor = false;
+            Sum_radioButton.CheckedChanged += radioButton_CheckedChanged;
             // 
-            // radioButton2
+            // FlameReaver_radioButton
             // 
-            radioButton2.Location = new Point(330, 356);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(150, 26);
-            radioButton2.TabIndex = 9;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
-            radioButton2.UseVisualStyleBackColor = true;
+            FlameReaver_radioButton.BackColor = SystemColors.ControlText;
+            FlameReaver_radioButton.ForeColor = Color.White;
+            FlameReaver_radioButton.Location = new Point(330, 356);
+            FlameReaver_radioButton.Name = "FlameReaver_radioButton";
+            FlameReaver_radioButton.Size = new Size(150, 26);
+            FlameReaver_radioButton.TabIndex = 9;
+            FlameReaver_radioButton.TabStop = true;
+            FlameReaver_radioButton.Text = "フレイムスティーラー";
+            FlameReaver_radioButton.UseVisualStyleBackColor = false;
+            FlameReaver_radioButton.CheckedChanged += radioButton_CheckedChanged;
             // 
-            // radioButton3
+            // Pollux_radioButton
             // 
-            radioButton3.Location = new Point(580, 356);
-            radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(150, 26);
-            radioButton3.TabIndex = 10;
-            radioButton3.TabStop = true;
-            radioButton3.Text = "radioButton3";
-            radioButton3.UseVisualStyleBackColor = true;
+            Pollux_radioButton.BackColor = SystemColors.ControlText;
+            Pollux_radioButton.ForeColor = Color.White;
+            Pollux_radioButton.Location = new Point(580, 356);
+            Pollux_radioButton.Name = "Pollux_radioButton";
+            Pollux_radioButton.Size = new Size(150, 26);
+            Pollux_radioButton.TabIndex = 10;
+            Pollux_radioButton.TabStop = true;
+            Pollux_radioButton.Text = "ボリュクス";
+            Pollux_radioButton.UseVisualStyleBackColor = false;
+            Pollux_radioButton.CheckedChanged += radioButton_CheckedChanged;
             // 
             // select_btn
             // 
@@ -145,6 +168,7 @@
             select_btn.TabIndex = 11;
             select_btn.Text = "選択";
             select_btn.UseVisualStyleBackColor = true;
+            select_btn.Click += select_btn_Click;
             // 
             // label1
             // 
@@ -156,7 +180,9 @@
             // 
             // character_label
             // 
-            character_label.Font = new Font("游ゴシック Light", 9F);
+            character_label.BackColor = Color.Transparent;
+            character_label.Font = new Font("HGP創英角ﾎﾟｯﾌﾟ体", 9F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 128);
+            character_label.ForeColor = Color.White;
             character_label.Location = new Point(330, 114);
             character_label.Name = "character_label";
             character_label.Size = new Size(150, 19);
@@ -168,22 +194,24 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.White;
+            BackgroundImage = Properties.Resources.サーシス;
             ClientSize = new Size(800, 450);
             Controls.Add(character_label);
             Controls.Add(label1);
             Controls.Add(select_btn);
-            Controls.Add(radioButton3);
-            Controls.Add(radioButton2);
-            Controls.Add(radioButton1);
+            Controls.Add(Pollux_radioButton);
+            Controls.Add(FlameReaver_radioButton);
+            Controls.Add(Sum_radioButton);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(name_label);
             Controls.Add(pictureBox1);
             Controls.Add(status_label);
-            Controls.Add(textBox1);
+            Controls.Add(name_textBox);
             Controls.Add(title_label);
             Name = "character_select";
-            Text = "Form1";
+            Text = "character_select";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
@@ -194,15 +222,15 @@
         #endregion
 
         private Label title_label;
-        private TextBox textBox1;
+        private TextBox name_textBox;
         private Label status_label;
         private PictureBox pictureBox1;
         private Label name_label;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private RadioButton radioButton1;
-        private RadioButton radioButton2;
-        private RadioButton radioButton3;
+        private RadioButton Sum_radioButton;
+        private RadioButton FlameReaver_radioButton;
+        private RadioButton Pollux_radioButton;
         private Button select_btn;
         private Label label1;
         private Label character_label;

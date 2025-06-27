@@ -1,0 +1,119 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|c:\\users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|c:\\users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|c:\\users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 292,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form2.cs",
+              "DocumentMoniker": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form2.cs",
+              "RelativeDocumentMoniker": "nurturing\\Form2.cs",
+              "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form2.cs",
+              "RelativeToolTip": "nurturing\\Form2.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T01:53:36.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Form2.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form2.cs",
+              "RelativeDocumentMoniker": "nurturing\\Form2.cs",
+              "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form2.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "nurturing\\Form2.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-27T01:48:32.084Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.cs",
+              "RelativeDocumentMoniker": "nurturing\\Form1.cs",
+              "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.cs",
+              "RelativeToolTip": "nurturing\\Form1.cs",
+              "ViewState": "AgIAADEAAAAAAAAAAAAUwEgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T02:03:40.828Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "DocumentMoniker": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.cs",
+              "RelativeDocumentMoniker": "nurturing\\Form1.cs",
+              "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "RelativeToolTip": "nurturing\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T02:02:56.472Z",
+              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "nurturing\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.Designer.cs",
+              "RelativeToolTip": "nurturing\\Form1.Designer.cs",
+              "ViewState": "AgIAANwAAAAAAAAAAAAAAMUAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-26T02:27:33.78Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nurturing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c79458d74e8322369c1a101e2b2ca3df8775faf4")]
 [assembly: System.Reflection.AssemblyProductAttribute("nurturing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("nurturing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
