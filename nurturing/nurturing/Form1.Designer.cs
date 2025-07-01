@@ -41,6 +41,7 @@
             select_btn = new Button();
             label1 = new Label();
             character_label = new Label();
+            statuload_button = new Button();
             title_label = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -190,6 +191,16 @@
             character_label.Text = "キャラクター選択";
             character_label.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // statuload_button
+            // 
+            statuload_button.Location = new Point(624, 6);
+            statuload_button.Name = "statuload_button";
+            statuload_button.Size = new Size(164, 62);
+            statuload_button.TabIndex = 14;
+            statuload_button.Text = "育成データをロードする";
+            statuload_button.UseVisualStyleBackColor = true;
+            statuload_button.Click += statuload_button_Click;
+            // 
             // character_select
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -197,6 +208,7 @@
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.サーシス;
             ClientSize = new Size(800, 450);
+            Controls.Add(statuload_button);
             Controls.Add(character_label);
             Controls.Add(label1);
             Controls.Add(select_btn);
@@ -234,5 +246,6 @@
         private Button select_btn;
         private Label label1;
         private Label character_label;
+        private Button statuload_button;
     }
 }
