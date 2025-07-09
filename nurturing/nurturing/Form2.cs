@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
+using System.Xml.Linq;
 
 namespace nurturing
 {
@@ -20,18 +21,21 @@ namespace nurturing
         //経験値
         int xp;
         int nextxp;
-        int basexp = 1;
+        int basexp;
         //ステータス
         string playerName;
         string charType;
         int hp;
         int atk;
         int def;
+        int cc;
+        double cd;
 
         Random rnd = new Random();
-        public FormTraining(string playerName, string charType, int level, int hp, int atk, int def, int xp, int nextxp)
+        public FormTraining(string playerName, string charType, int level, int hp, int atk, int def, int xp, int nextxp,int cc,double cd)
         {
             InitializeComponent();
+
             this.hp = hp;
             this.atk = atk;
             this.def = def;
@@ -40,6 +44,10 @@ namespace nurturing
             this.level = level;
             this.xp = xp;
             this.nextxp = nextxp;
+            this.cc = cc;
+            this.cd = cd;
+            this.basexp = (int)(15 + level * 1.2);
+
             if (charType == "サム")
             {
                 character_pictureBox.Image = Properties.Resources.サム;
@@ -55,39 +63,89 @@ namespace nurturing
 
             name_label.Text = "名前\n" + playerName + "の" + charType;
             status_label.Text = "ステータス\n" + $"体力　：{hp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}\n";
-            XP_label.Text = $"レベル:{level}\n" + "経験値\n" + $"{xp}\n" + $"Next:{nextxp}";
-            ;
+            if (level >= 80)
+            {
+                xp_label.Text = $"レベル:{level}\n" + "レベル上限に達しました";
+                xp_button.Enabled = false;
+            }
+            else
+            {
+                xp_label.Text = $"レベル:{level}\n" + "経験値\n" + $"{xp}\n" + $"Next:{nextxp}";
+
+            }
+            critical_label.Text = $"cc：{cc}\n" + $"cd：{cd}";
         }
 
         private async void xp_button_Click(object sender, EventArgs e)
         {
-
+            if (level >= 80)
+            {
+                MessageBox.Show("レベル上限に達しました", "上限", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
             xp_button.Enabled = false;
 
             xp += basexp;
-            XP_label.Text = $"レベル:{level}\n経験値\n{xp}\nNext:{nextxp}";
+            xp_label.Text = $"レベル:{level}\n経験値\n{xp}\nNext:{nextxp}";
 
             while (xp >= nextxp)
             {
-                int r = rnd.Next(3); // 0=hp, 1=atk, 2=def
-                int r1 = rnd.Next(10, 101); // ステータスのあがり幅
+                int r = rnd.Next(101); // 0-30hp, 31-50atk, 51-70def, 71-85cc, 86-100cd
+                int r1 = rnd.Next(100, 2000); // ステータスのあがり幅
 
                 await Task.Delay(300);
 
-                switch (r)
+                if (r <= 30)
                 {
-                    case 0: hp += r1; break;
-                    case 1: atk += r1; break;
-                    case 2: def += r1; break;
+                    hp += r1;
+                }
+                else if (r <= 50)
+                {
+                    atk += r1;
+                }
+                else if(r <= 70)
+                {
+                    def += r1;
+                }
+                else if (r <= 85)
+                {
+                    if (cc <= 100)
+                    {
+                        cc += 5;
+                    }
+                    else
+                    {
+                        cd += 0.1;
+                        cd = Math.Floor(cd * 10) / 10;
+                    }
+                }
+                else if (r <= 100)
+                {
+                    cd += 0.1;
+                    cd = Math.Floor(cd * 10) / 10;
                 }
 
-                level++;
-                xp -= nextxp;
-                nextxp = (int)(10 * Math.Pow(1.5, level - 1));
-                basexp = 1 + (level / 4);
+                while (xp >= nextxp)
+                {
+                    xp -= nextxp;
+                    level++;
+
+                    if (level <= 30)
+                    {
+                        nextxp = (int)(10 * Math.Pow(1.2, level - 1));
+                    }
+                    else
+                    {
+                        double baseAtLevel30 = 10 * Math.Pow(1.2, 29);
+                        nextxp = (int)(baseAtLevel30 * Math.Pow(1.28, level - 30));
+                    }
+
+                    basexp = (int)(15 + level * 1.2);
+
+                }
 
                 UpdateStatusLabel();
-                XP_label.Text = $"レベル:{level}\n経験値\n{xp}\nNext:{nextxp}\n" + "レベルアップ!!";
+                xp_label.Text = $"レベル:{level}\n経験値\n{xp}\nNext:{nextxp}\nレベルアップ!!";
             }
             xp_button.Enabled = true;
         }
@@ -95,8 +153,8 @@ namespace nurturing
 
         private void UpdateStatusLabel()
         {
-            status_label.Text =
-                "ステータス\n" + $"体力　：{hp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}";
+            status_label.Text = "ステータス\n" + $"体力　：{hp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}";
+            critical_label.Text = $"cc：{cc}\n" + $"cd：{cd}";
         }
 
         private void csv_button_Click(object sender, EventArgs e)
@@ -112,8 +170,8 @@ namespace nurturing
                 string filePath = Path.Combine(downloadsPath, fileName);
 
                 // CSV ヘッダーとデータ（指定の順番で）
-                string header = "名前,職業,レベル,体力,攻撃力,防御力,現在XP,次のレベルまでのXP";
-                string csvLine = $"{playerName},{charType},{level},{hp},{atk},{def},{xp},{nextxp}";
+                string header = "名前,職業,レベル,体力,攻撃力,防御力,現在XP,次のレベルまでのXP,クリティカル率,クリティカルダメージ";
+                string csvLine = $"{playerName},{charType},{level},{hp},{atk},{def},{xp},{nextxp},{cc},{cd}";
 
                 // 書き込み
                 File.WriteAllText(filePath, header + "\n" + csvLine);
@@ -128,7 +186,19 @@ namespace nurturing
 
         private void battle_button_Click(object sender, EventArgs e)
         {
+            DialogResult result = MessageBox.Show(
+            "バトルしますか？",
+            "確認",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
 
+            if (result == DialogResult.Yes)
+            {
+                MessageBox.Show("バトルへ移行します", "バトル", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                From_Battle from_Battle = new From_Battle(playerName,charType,level,hp,atk,def,xp,nextxp,cc,cd);
+                from_Battle.Show();
+                this.Hide();
+            }
         }
     }
 }

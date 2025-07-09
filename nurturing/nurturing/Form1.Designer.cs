@@ -1,6 +1,6 @@
 ﻿namespace nurturing
 {
-    partial class character_select
+    partial class Form_Character_select
     {
         /// <summary>
         ///  Required designer variable.
@@ -50,6 +50,7 @@
             // 
             // title_label
             // 
+            title_label.Anchor = AnchorStyles.Top;
             title_label.BackColor = Color.Transparent;
             title_label.Font = new Font("HGS創英角ﾎﾟｯﾌﾟ体", 30F, FontStyle.Regular, GraphicsUnit.Point, 128);
             title_label.ForeColor = Color.White;
@@ -71,6 +72,7 @@
             // 
             // status_label
             // 
+            status_label.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             status_label.BackColor = Color.Transparent;
             status_label.Font = new Font("HGP創英角ﾎﾟｯﾌﾟ体", 9F, FontStyle.Bold, GraphicsUnit.Point, 128);
             status_label.ForeColor = Color.White;
@@ -79,9 +81,11 @@
             status_label.Size = new Size(208, 58);
             status_label.TabIndex = 2;
             status_label.Text = "ステータス";
+            status_label.TextAlign = ContentAlignment.TopCenter;
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Left;
             pictureBox1.Image = Properties.Resources.サム;
             pictureBox1.Location = new Point(70, 150);
             pictureBox1.Name = "pictureBox1";
@@ -104,6 +108,7 @@
             // 
             // pictureBox2
             // 
+            pictureBox2.Anchor = AnchorStyles.None;
             pictureBox2.Image = Properties.Resources.フレイムスティーラー;
             pictureBox2.Location = new Point(330, 150);
             pictureBox2.Name = "pictureBox2";
@@ -114,6 +119,7 @@
             // 
             // pictureBox3
             // 
+            pictureBox3.Anchor = AnchorStyles.Right;
             pictureBox3.Image = Properties.Resources.ボリュクス;
             pictureBox3.Location = new Point(580, 150);
             pictureBox3.Name = "pictureBox3";
@@ -124,6 +130,7 @@
             // 
             // Sum_radioButton
             // 
+            Sum_radioButton.Anchor = AnchorStyles.Left;
             Sum_radioButton.BackColor = SystemColors.ControlText;
             Sum_radioButton.ForeColor = Color.White;
             Sum_radioButton.Location = new Point(70, 356);
@@ -137,6 +144,7 @@
             // 
             // FlameReaver_radioButton
             // 
+            FlameReaver_radioButton.Anchor = AnchorStyles.None;
             FlameReaver_radioButton.BackColor = SystemColors.ControlText;
             FlameReaver_radioButton.ForeColor = Color.White;
             FlameReaver_radioButton.Location = new Point(330, 356);
@@ -150,6 +158,7 @@
             // 
             // Pollux_radioButton
             // 
+            Pollux_radioButton.Anchor = AnchorStyles.Right;
             Pollux_radioButton.BackColor = SystemColors.ControlText;
             Pollux_radioButton.ForeColor = Color.White;
             Pollux_radioButton.Location = new Point(580, 356);
@@ -163,6 +172,7 @@
             // 
             // select_btn
             // 
+            select_btn.Anchor = AnchorStyles.Bottom;
             select_btn.Location = new Point(330, 401);
             select_btn.Name = "select_btn";
             select_btn.Size = new Size(150, 37);
@@ -181,6 +191,7 @@
             // 
             // character_label
             // 
+            character_label.Anchor = AnchorStyles.Top;
             character_label.BackColor = Color.Transparent;
             character_label.Font = new Font("HGP創英角ﾎﾟｯﾌﾟ体", 9F, FontStyle.Bold | FontStyle.Underline, GraphicsUnit.Point, 128);
             character_label.ForeColor = Color.White;
@@ -193,6 +204,7 @@
             // 
             // statuload_button
             // 
+            statuload_button.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             statuload_button.Location = new Point(624, 6);
             statuload_button.Name = "statuload_button";
             statuload_button.Size = new Size(164, 62);
@@ -201,12 +213,13 @@
             statuload_button.UseVisualStyleBackColor = true;
             statuload_button.Click += statuload_button_Click;
             // 
-            // character_select
+            // Form_Character_select
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             BackgroundImage = Properties.Resources.サーシス;
+            BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(statuload_button);
             Controls.Add(character_label);
@@ -222,7 +235,8 @@
             Controls.Add(status_label);
             Controls.Add(name_textBox);
             Controls.Add(title_label);
-            Name = "character_select";
+            DoubleBuffered = true;
+            Name = "Form_Character_select";
             Text = "character_select";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();

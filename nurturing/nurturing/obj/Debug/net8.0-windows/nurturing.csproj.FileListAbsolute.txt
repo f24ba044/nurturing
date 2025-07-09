@@ -19,7 +19,6 @@ C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\bin\Debug\net8.0-windo
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\bin\Debug\net8.0-windows\nurturing.runtimeconfig.json
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\bin\Debug\net8.0-windows\nurturing.dll
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\bin\Debug\net8.0-windows\nurturing.pdb
-C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.character_select.resources
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.csproj.GenerateResource.cache
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.AssemblyInfoInputs.cache
@@ -33,3 +32,5 @@ C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windo
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\ref\nurturing.dll
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.Properties.Resources.resources
 C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.FormTraining.resources
+C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.Form_Character_select.resources
+C:\Users\ryugo\Source\Repos\nurturing\nurturing\nurturing\obj\Debug\net8.0-windows\nurturing.From_Battle.resources

@@ -2,12 +2,11 @@ using System.Xml.Linq;
 
 namespace nurturing
 {
-    public partial class character_select : Form
+    public partial class Form_Character_select : Form
     {
-        public character_select()
+        public Form_Character_select()
         {
             InitializeComponent();
-            BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void radioButton_CheckedChanged(object sender, EventArgs e)
@@ -37,6 +36,8 @@ namespace nurturing
             string type = "";
             int level = 1, xp = 0, nextxp = 5;
             int hp = 0, atk = 0, def = 0;
+            int cc = 5;
+            double cd = 2.0;
 
             if (Sum_radioButton.Checked)
             {
@@ -69,7 +70,7 @@ namespace nurturing
             if (result == DialogResult.Yes)
             {
                 MessageBox.Show("キャラクターが確定しました！", "完了", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormTraining trainingForm = new FormTraining(name, type, level, hp, atk, def, xp, nextxp);
+                FormTraining trainingForm = new FormTraining(name, type, level, hp, atk, def, xp, nextxp,cc,cd);
                 trainingForm.Show();
                 this.Hide();
             }
@@ -108,9 +109,11 @@ namespace nurturing
                         int def           = int.Parse(values[5]);
                         int xp            = int.Parse(values[6]);
                         int nextxp        = int.Parse(values[7]);
+                        int cc            = int.Parse(values[8]);
+                        double cd         = double.Parse(values[9]);
 
                         // 拡張版コンストラクタを使って育成画面へ
-                        FormTraining trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp);
+                        FormTraining trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp,cc, cd);
                         trainingForm.Show();
                         this.Hide();
                     }

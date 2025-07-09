@@ -34,8 +34,9 @@
             name_label = new Label();
             xp_button = new Button();
             status_label = new Label();
-            XP_label = new Label();
+            xp_label = new Label();
             battle_button = new Button();
+            critical_label = new Label();
             title_label = new Label();
             ((System.ComponentModel.ISupportInitialize)character_pictureBox).BeginInit();
             SuspendLayout();
@@ -101,15 +102,15 @@
             status_label.Size = new Size(180, 90);
             status_label.TabIndex = 13;
             // 
-            // XP_label
+            // xp_label
             // 
-            XP_label.BackColor = Color.Transparent;
-            XP_label.Font = new Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
-            XP_label.ForeColor = Color.White;
-            XP_label.Location = new Point(32, 241);
-            XP_label.Name = "XP_label";
-            XP_label.Size = new Size(180, 131);
-            XP_label.TabIndex = 14;
+            xp_label.BackColor = Color.Transparent;
+            xp_label.Font = new Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            xp_label.ForeColor = Color.White;
+            xp_label.Location = new Point(32, 241);
+            xp_label.Name = "xp_label";
+            xp_label.Size = new Size(180, 131);
+            xp_label.TabIndex = 14;
             // 
             // battle_button
             // 
@@ -121,6 +122,16 @@
             battle_button.UseVisualStyleBackColor = true;
             battle_button.Click += battle_button_Click;
             // 
+            // critical_label
+            // 
+            critical_label.BackColor = Color.Transparent;
+            critical_label.Font = new Font("HG創英角ﾎﾟｯﾌﾟ体", 12F, FontStyle.Regular, GraphicsUnit.Point, 128);
+            critical_label.ForeColor = Color.White;
+            critical_label.Location = new Point(218, 151);
+            critical_label.Name = "critical_label";
+            critical_label.Size = new Size(180, 90);
+            critical_label.TabIndex = 16;
+            // 
             // FormTraining
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -128,8 +139,9 @@
             BackgroundImage = Properties.Resources.背景;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
+            Controls.Add(critical_label);
             Controls.Add(battle_button);
-            Controls.Add(XP_label);
+            Controls.Add(xp_label);
             Controls.Add(status_label);
             Controls.Add(xp_button);
             Controls.Add(name_label);
@@ -149,7 +161,8 @@
         private Label name_label;
         private Button xp_button;
         private Label status_label;
-        private Label XP_label;
+        private Label xp_label;
         private Button battle_button;
+        private Label critical_label;
     }
 }
