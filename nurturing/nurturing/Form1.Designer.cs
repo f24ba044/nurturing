@@ -85,11 +85,11 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Anchor = AnchorStyles.Left;
+            pictureBox1.Anchor = AnchorStyles.None;
             pictureBox1.Image = Properties.Resources.サム;
-            pictureBox1.Location = new Point(70, 150);
+            pictureBox1.Location = new Point(70, 136);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(150, 200);
+            pictureBox1.Size = new Size(150, 214);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
@@ -110,20 +110,20 @@
             // 
             pictureBox2.Anchor = AnchorStyles.None;
             pictureBox2.Image = Properties.Resources.フレイムスティーラー;
-            pictureBox2.Location = new Point(330, 150);
+            pictureBox2.Location = new Point(330, 136);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(150, 200);
+            pictureBox2.Size = new Size(150, 214);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox2.TabIndex = 5;
             pictureBox2.TabStop = false;
             // 
             // pictureBox3
             // 
-            pictureBox3.Anchor = AnchorStyles.Right;
+            pictureBox3.Anchor = AnchorStyles.None;
             pictureBox3.Image = Properties.Resources.ボリュクス;
-            pictureBox3.Location = new Point(580, 150);
+            pictureBox3.Location = new Point(580, 136);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(150, 200);
+            pictureBox3.Size = new Size(150, 214);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox3.TabIndex = 6;
             pictureBox3.TabStop = false;

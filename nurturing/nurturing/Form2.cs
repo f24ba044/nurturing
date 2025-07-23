@@ -17,7 +17,7 @@ namespace nurturing
     public partial class FormTraining : Form
     {
         //レベル
-        int level = 1;
+        int level;
         //経験値
         int xp;
         int nextxp;
@@ -32,7 +32,7 @@ namespace nurturing
         double cd;
 
         Random rnd = new Random();
-        public FormTraining(string playerName, string charType, int level, int hp, int atk, int def, int xp, int nextxp,int cc,double cd)
+        public FormTraining(string playerName, string charType, int level, int hp, int atk, int def, int xp, int nextxp, int cc, double cd)
         {
             InitializeComponent();
 
@@ -63,7 +63,7 @@ namespace nurturing
 
             name_label.Text = "名前\n" + playerName + "の" + charType;
             status_label.Text = "ステータス\n" + $"体力　：{hp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}\n";
-            if (level >= 80)
+            if (level >= 70)
             {
                 xp_label.Text = $"レベル:{level}\n" + "レベル上限に達しました";
                 xp_button.Enabled = false;
@@ -74,11 +74,75 @@ namespace nurturing
 
             }
             critical_label.Text = $"cc：{cc}\n" + $"cd：{cd}";
+
+
+            if (level >= 70)
+            {
+                xp_label.Text = $"レベル:{level}\n経験値\n{xp}\nNext:{nextxp}\nレベル上限に達しました";
+            }
+
+            while (xp >= nextxp)
+            {
+                int r = rnd.Next(101); // 0-30hp, 31-50atk, 51-70def, 71-85cc, 86-100cd
+                int r1 = rnd.Next(100, 2000); // ステータスのあがり幅
+
+                if (r <= 30)
+                {
+                    hp += r1;
+                }
+                else if (r <= 50)
+                {
+                    atk += r1;
+                }
+                else if (r <= 70)
+                {
+                    def += r1;
+                }
+                else if (r <= 85)
+                {
+                    if (cc <= 100)
+                    {
+                        cc += 5;
+                    }
+                    else
+                    {
+                        cd += 0.1;
+                        cd = Math.Floor(cd * 10) / 10;
+                    }
+                }
+                else if (r <= 100)
+                {
+                    cd += 0.1;
+                    cd = Math.Floor(cd * 10) / 10;
+                }
+
+                while (xp >= nextxp)
+                {
+                    xp -= nextxp;
+                    level++;
+
+                    if (level <= 30)
+                    {
+                        nextxp = (int)(10 * Math.Pow(1.2, level - 1));
+                    }
+                    else
+                    {
+                        double baseAtLevel30 = 10 * Math.Pow(1.2, 29);
+                        nextxp = (int)(baseAtLevel30 * Math.Pow(1.28, level - 30));
+                    }
+
+                    basexp = (int)(15 + level * 1.2);
+
+                }
+
+                UpdateStatusLabel();
+                xp_label.Text = $"レベル:{level}\n経験値\n{xp}\nNext:{nextxp}\nレベルアップ!!";
+            }
         }
 
         private async void xp_button_Click(object sender, EventArgs e)
         {
-            if (level >= 80)
+            if (level >= 70)
             {
                 MessageBox.Show("レベル上限に達しました", "上限", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

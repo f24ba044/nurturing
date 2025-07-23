@@ -51,11 +51,8 @@ namespace nurturing
             this.basehp = hp;
             this.cc = cc;
             this.cd = cd;
-            //敵ステータス
-            this.enemyhp = rnd.Next(1000, 2000) * level;
-            this.enemyatk = rnd.Next(100, 300) * level;
-            this.enemydef = rnd.Next(100, 500) * level;
-            int enemyrandom = rnd.Next(3); //敵をランダムで決める
+            //敵をランダムで決める
+            int enemyrandom = rnd.Next(3); 
 
             //味方
             if (charType == "サム")
@@ -74,6 +71,10 @@ namespace nurturing
             //敵
             if (enemyrandom == 0)
             {
+                //敵ステータス
+                this.enemyhp = rnd.Next(500, 1000) * level;
+                this.enemyatk = rnd.Next(100, 400) * level;
+                this.enemydef = rnd.Next(500, 1000) * level;
                 enemyName = "サム";
                 enemy_pictureBox.Image = Properties.Resources.サム;
                 enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
@@ -81,6 +82,10 @@ namespace nurturing
             }
             else if (enemyrandom == 1)
             {
+                //敵ステータス
+                this.enemyhp = rnd.Next(1200, 2000) * level;
+                this.enemyatk = rnd.Next(100, 300) * level;
+                this.enemydef = rnd.Next(300, 1000) * level;
                 enemyName = "フレイムスティーラー";
                 enemy_pictureBox.Image = Properties.Resources.フレイムスティーラー;
                 enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
@@ -88,6 +93,10 @@ namespace nurturing
             }
             else if (enemyrandom == 2)
             {
+                //敵ステータス
+                this.enemyhp = rnd.Next(2000, 4000) * level;
+                this.enemyatk = rnd.Next(50, 100) * level;
+                this.enemydef = rnd.Next(50, 100) * level;
                 enemyName = "ボリュクス";
                 enemy_pictureBox.Image = Properties.Resources.ボリュクス;
                 enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
@@ -119,131 +128,227 @@ namespace nurturing
         {
             attack_button.Enabled = false;
             ult_button.Enabled = false;
-            log_label.Text = null;
-            //プレイヤーダメージ
-            bool isCritical = rnd.Next(1, 101) < cc;
-            double criticalMultiplier = isCritical ? cd : 1.0;
-            int baseDamage = atk - (enemydef / 5);
-            double variance = rnd.NextDouble() * 0.4 + 0.8;
-            baseDamage = Math.Max(baseDamage, 1);
-            int player_damage = (int)(baseDamage * criticalMultiplier * variance);
-            string log_playerdamage = player_damage.ToString();
+            log_label.Text = "";
 
-            //敵ダメージ
-            int enemyBaseDamage = enemyatk - (def / 5);
-            double enemyVariance = rnd.NextDouble() * 0.4 + 0.8;
-            enemyBaseDamage = Math.Max(enemyBaseDamage, 1);
-            int enemy_damage = (int)(enemyBaseDamage * enemyVariance);
-            string log_enemydamage = enemy_damage.ToString();
-
-            log_label.Text += $"{charType}の攻撃!\n";
-
-            await Task.Delay(100);
-
-            string v1 = $"{log_playerdamage}ダメージ!\n";
-            log_label.Text += v1;
-            enemyhp -= player_damage;
-            enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
-
-
-            if (enemyhp < 0)
+            // プレイヤー攻撃
+            if (charType == "サム" || charType == "フレイムスティーラー")
             {
-                MessageBox.Show($"{charType}は戦いに勝利した!", "winer", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                int gainedXp;
+                await attack1();
+            }
+            else if (charType == "ボリュクス")
+            {
+                await attack2();
+            }
 
-                if (level <= 30)
-                {
-                    // テーブルが緩やかなため、小さめの倍率でレベルに応じて成長
-                    gainedXp = (int)(8 * Math.Pow(1.15, level));
-                }
-                else
-                {
-                    // 急激に増えるテーブルに合わせて経験値も増加
-                    gainedXp = (int)(300 * Math.Pow(1.25, level - 30));
-                }
-
-                // 獲得経験値を加算
+            // 敵のHPが0以下なら勝利処理
+            if (enemyhp <= 0)
+            {
+                MessageBox.Show($"{charType}は戦いに勝利した!", "勝利", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                int gainedXp = level <= 30
+                    ? (int)(8 * Math.Pow(1.15, level))
+                    : (int)(600 * Math.Pow(1.25, level - 30));
                 xp += gainedXp;
 
-                FormTraining trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp, cc, cd);
+                var trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp, cc, cd);
                 trainingForm.Show();
                 this.Hide();
-
                 return;
             }
 
-            await Task.Delay(100);
 
-            log_label.Text += $"{enemyName}の攻撃!\n";
-            string v2 = $"{charType}は{log_enemydamage}受けた!\n";
-            log_label.Text += v2;
-            basehp -= enemy_damage;
+            await enemyAttack();
+
+            // 必殺技ターン処理
             ult--;
-            if (ult == 0)
+            if (ult <= 0)
             {
                 ult_button.Enabled = true;
-                ult++;
-                status_label.Text = $"{charType}\n" + "ステータス\n" + $"体力　：{basehp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}\n" + $"cc:{cc}\n" + $"cd{cd}\n" + $"レベル:{level}\n" + "経験値\n" + $"{xp}\n" + $"Next:{nextxp}\n" + $"必殺技使用可能!";
-
+                status_label.Text = $"{charType}\nステータス\n体力：{basehp}\n攻撃力：{atk}\n防御力：{def}\ncc:{cc}\ncd:{cd}\nレベル:{level}\n経験値\n{xp}\nNext:{nextxp}\n必殺技使用可能!";
             }
             else
             {
-                status_label.Text = $"{charType}\n" + "ステータス\n" + $"体力　：{basehp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}\n" + $"cc:{cc}\n" + $"cd{cd}\n" + $"レベル:{level}\n" + "経験値\n" + $"{xp}\n" + $"Next:{nextxp}\n" + $"必殺技まで残り{ult}ターン";
-
-            }
-            if (basehp < 0)
-            {
-                MessageBox.Show($"{charType}は戦いに敗れた", "lose", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormTraining trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp, cc, cd);
-                trainingForm.Show();
-                this.Hide();
+                status_label.Text = $"{charType}\nステータス\n体力：{basehp}\n攻撃力：{atk}\n防御力：{def}\ncc:{cc}\ncd:{cd}\nレベル:{level}\n経験値\n{xp}\nNext:{nextxp}\n必殺技まで残り{ult}ターン";
             }
 
-            await Task.Delay(500);
             attack_button.Enabled = true;
+
         }
 
+        private async  Task attack1()
+        {
+            bool isCritical = rnd.Next(1, 101) <= cc;
+            double criticalMultiplier = isCritical ? cd : 1.0;
+            int baseDamage = atk - (enemydef / 5);
+            baseDamage = Math.Max(baseDamage, 1);
+            double variance = rnd.NextDouble() * 0.4 + 0.8;
+            int player_damage = (int)(baseDamage * criticalMultiplier * variance);
+            enemyhp -= player_damage;
+
+            log_label.Text += $"{charType}の攻撃！\n";
+            await Task.Delay(100);
+            log_label.Text += $"{player_damage} ダメージ！\n";
+
+            // 敵ステータス更新
+            enemy_status_label.Text = $"{enemyName}\n体力：{enemyhp}\n攻撃力：{enemyatk}\n防御力：{enemydef}\n";
+        }
+
+        private async Task attack2()
+        {
+            bool isCritical = rnd.Next(1, 101) <= cc;
+            double criticalMultiplier = isCritical ? cd : 1.0;
+            double baseDamage = (hp * 0.8) - (enemydef / 5);
+            baseDamage = Math.Max(baseDamage, 1);
+            double variance = rnd.NextDouble() * 0.4 + 0.8;
+            int player_damage = (int)(baseDamage * criticalMultiplier * variance);
+            enemyhp -= player_damage;
+
+            log_label.Text += $"{charType}の攻撃！\n";
+            await Task.Delay(100);
+            log_label.Text += $"{player_damage} ダメージ！\n";
+
+            // 敵ステータス更新
+            enemy_status_label.Text = $"{enemyName}\n体力：{enemyhp}\n攻撃力：{enemyatk}\n防御力：{enemydef}\n";
+        }
+
+        private async Task enemyAttack()
+        {
+            // 敵の攻撃処理
+            await Task.Delay(200);
+
+            int enemyBaseDamage = enemyatk - (def / 3);
+            double enemyVariance = rnd.NextDouble() * 0.4 + 0.8;
+            enemyBaseDamage = Math.Max(enemyBaseDamage, 1);
+            int enemy_damage = (int)(enemyBaseDamage * enemyVariance);
+            basehp -= enemy_damage;
+
+            log_label.Text += $"{enemyName}の攻撃!\n";
+
+            await Task.Delay(100);
+
+            log_label.Text += $"{charType}は{enemy_damage}ダメージを受けた！\n";
+
+            // プレイヤーのHPチェック
+            if (basehp <= 0)
+            {
+                int gainedXp = level <= 30
+                    ? (int)(4 * Math.Pow(1.15, level))
+                    : (int)(300 * Math.Pow(1.25, level - 30));
+                xp += gainedXp;
+
+                MessageBox.Show($"{charType}は戦いに敗れた", "敗北", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp, cc, cd);
+                trainingForm.Show();
+                this.Hide();
+                return;
+            }
+        }
         private async void ult_button_Click(object sender, EventArgs e)
         {
             log_label.Text = null;
             attack_button.Enabled = false;
             ult_button.Enabled = false;
 
-            int[] damageArray = new int[3];
-            string[] log_playerdamage = new string[3];
+            int[] damageArray;
+            string[] log_playerdamage;
 
-            //プレイヤーダメージ
-            for (int i = 0; i < 3; i++)
-            {
-                bool isCritical = rnd.Next(1, 101) < cc;
-                double criticalMultiplier = isCritical ? cd : 1.0;
-                int baseDamage = atk - (enemydef / 5);
-                double variance = rnd.NextDouble() * 0.4 + 0.8;
-                baseDamage = Math.Max(baseDamage, 1);
-                int player_damage = (int)(baseDamage * criticalMultiplier * variance);
-
-                damageArray[i] = player_damage;
-                log_playerdamage[i] = player_damage.ToString();
-            }
-
-            //敵ダメージ
-            int enemyBaseDamage = enemyatk - (def / 5);
-            double enemyVariance = rnd.NextDouble() * 0.4 + 0.8;
-            enemyBaseDamage = Math.Max(enemyBaseDamage, 1);
-            int enemy_damage = (int)(enemyBaseDamage * enemyVariance);
-            string log_enemydamage = enemy_damage.ToString();
+            ult = 2;
 
             log_label.Text += $"{charType}の必殺技!\n";
 
-            await Task.Delay(100);
-            for (int i = 0; i < 3; i++)
+            if (charType == "サム")
             {
+                bool isCritical = rnd.Next(1, 101) <= cc;
+                double criticalMultiplier = isCritical ? cd : 1.0;
+                int baseDamage = atk;
+                baseDamage = Math.Max(baseDamage, 1);
+                double variance = rnd.NextDouble() * 0.4 + 0.8;
+                int player_damage = (int)(baseDamage * criticalMultiplier * variance);
+                enemyhp -= player_damage;
+
                 await Task.Delay(100);
-                enemyhp -= damageArray[i];
-                log_label.Text += $"{log_playerdamage[i]}ダメージ！\n";
+
+                log_label.Text += $"{player_damage}ダメージ！\n";
                 enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
+
+                await Task.Delay(100);
+                int heal = (int)(hp * 0.25); // サムの必殺技でHPを25%回復
+                basehp += heal;
+                log_label.Text += $"{charType}は{heal}回復した！\n";
+                status_label.Text = $"{charType}\nステータス\n体力：{basehp}\n攻撃力：{atk}\n防御力：{def}\ncc:{cc}\ncd:{cd}\nレベル:{level}\n経験値\n{xp}\nNext:{nextxp}\n必殺技まで残り{ult}ターン";
             }
-            ult = 2;
+            else if (charType == "フレイムスティーラー")
+            {
+                damageArray = new int[6];
+                log_playerdamage = new string[6];
+                //プレイヤーダメージ
+                for (int i = 0; i < 5; i++)
+                {
+                    bool isCritical = rnd.Next(1, 101) < cc;
+                    double criticalMultiplier = isCritical ? cd : 1.0;
+                    double baseDamage = atk - (enemydef / 5);
+                    double variance = rnd.NextDouble() * 0.2 + 0.5;
+                    baseDamage = Math.Max(baseDamage, 1);
+                    int player_damage = (int)(baseDamage * criticalMultiplier * variance);
+
+                    damageArray[i] = player_damage;
+                    log_playerdamage[i] = player_damage.ToString();
+                }
+                // 最後の一撃
+                bool isCriticalLast = rnd.Next(1, 101) < cc;
+                double criticalMultiplierLast = isCriticalLast ? cd : 1.0;
+                double baseDamageLast = atk;
+                double varianceLast = rnd.NextDouble() * 0.8 + 1.6;
+                baseDamageLast = Math.Max(baseDamageLast, 1);
+                int player_damageLast = (int)(baseDamageLast * criticalMultiplierLast * varianceLast);
+                damageArray[5] = player_damageLast;
+                log_playerdamage[5] = player_damageLast.ToString();
+
+                await Task.Delay(100);
+
+                for (int i = 0; i < 6; i++)
+                {
+                    await Task.Delay(100);
+
+                    enemyhp -= damageArray[i];
+                    log_label.Text += $"{log_playerdamage[i]}ダメージ！\n";
+                    enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
+                }
+            }
+            else if (charType == "ボリュクス")
+            {
+                damageArray = new int[6];
+                log_playerdamage = new string[6];
+                //プレイヤーダメージ
+                for (int i = 0; i < 6; i++)
+                {
+                    bool isCritical = rnd.Next(1, 101) < cc;
+                    double criticalMultiplier = isCritical ? cd : 1.0;
+                    double baseDamage = (hp * 0.6) - (enemydef / 5);
+                    double variance = rnd.NextDouble() * 0.4 + 0.8;
+                    baseDamage = Math.Max(baseDamage, 1);
+                    int player_damage = (int)(baseDamage * criticalMultiplier * variance);
+
+                    damageArray[i] = player_damage;
+                    log_playerdamage[i] = player_damage.ToString();
+                }
+                await Task.Delay(100);
+
+                for (int i = 0; i < 6; i++)
+                {
+                    await Task.Delay(100);
+
+                    enemyhp -= damageArray[i];
+                    log_label.Text += $"{log_playerdamage[i]}ダメージ！\n";
+                    enemy_status_label.Text = $"{enemyName}\n" + $"体力　：{enemyhp}\n" + $"攻撃力：{enemyatk}\n" + $"防御力：{enemydef}\n";
+
+                }
+                // ボリュクスの必殺技はHPを回復
+                int heal = (int)(hp * 0.15); // ボリュクスの必殺技でHPを15%回復
+                basehp += heal;
+                log_label.Text += $"{charType}は{heal}回復した！\n";
+                status_label.Text = $"{charType}\nステータス\n体力：{basehp}\n攻撃力：{atk}\n防御力：{def}\ncc:{cc}\ncd:{cd}\nレベル:{level}\n経験値\n{xp}\nNext:{nextxp}\n必殺技まで残り{ult}ターン";
+
+            }
 
             if (enemyhp < 0)
             {
@@ -259,7 +364,7 @@ namespace nurturing
                 else
                 {
                     // 急激に増えるテーブルに合わせて経験値も増加
-                    gainedXp = (int)(300 * Math.Pow(1.25, level - 30));
+                    gainedXp = (int)(600 * Math.Pow(1.25, level - 30));
                 }
 
                 // 獲得経験値を加算
@@ -276,14 +381,27 @@ namespace nurturing
 
             await Task.Delay(300);
             log_label.Text = null;
-            log_label.Text += $"{enemyName}の攻撃!\n";
-            string v4 = $"{charType}は{log_enemydamage}受けた!\n";
-            log_label.Text += v4;
-            basehp -= enemy_damage;
-            status_label.Text = $"{charType}\n" + "ステータス\n" + $"体力　：{basehp}\n" + $"攻撃力：{atk}\n" + $"防御力：{def}\n" + $"cc:{cc}\n" + $"cd{cd}\n" + $"レベル:{level}\n" + "経験値\n" + $"{xp}\n" + $"Next:{nextxp}";
+
+            await enemyAttack();
 
             if (basehp < 0)
             {
+                int gainedXp;
+                if (level <= 30)
+                {
+                    // テーブルが緩やかなため、小さめの倍率でレベルに応じて成長
+                    gainedXp = (int)(4 * Math.Pow(1.15, level));
+                }
+                else
+                {
+                    // 急激に増えるテーブルに合わせて経験値も増加
+                    gainedXp = (int)(300 * Math.Pow(1.25, level - 30));
+                }
+
+
+                // 獲得経験値を加算
+                xp += gainedXp;
+
                 MessageBox.Show($"{charType}は戦いに敗れた", "lose", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormTraining trainingForm = new FormTraining(playerName, charType, level, hp, atk, def, xp, nextxp, cc, cd);
                 trainingForm.Show();
