@@ -15,11 +15,11 @@
       "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form3.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|c:\\users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|c:\\users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{7C88A606-2430-49BE-8BF8-6640E759EDB2}|nurturing\\nurturing.csproj|solutionrelative:nurturing\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -30,12 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 292,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -56,7 +52,7 @@
               "RelativeDocumentMoniker": "nurturing\\Form3.cs",
               "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form3.cs",
               "RelativeToolTip": "nurturing\\Form3.cs",
-              "ViewState": "AgIAAAUBAAAAAAAAAAAUwP0AAAAUAAAAAAAAAA==",
+              "ViewState": "AgIAAOsAAAAAAAAAAAAQwP0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-01T06:38:44.892Z",
               "EditorCaption": ""
@@ -70,8 +66,7 @@
               "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "nurturing\\Form3.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-01T06:38:37.082Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "WhenOpened": "2025-07-01T06:38:37.082Z"
             },
             {
               "$type": "Document",
@@ -95,8 +90,7 @@
               "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form2.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "nurturing\\Form2.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T01:48:32.084Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "WhenOpened": "2025-06-27T01:48:32.084Z"
             },
             {
               "$type": "Document",
@@ -107,8 +101,15 @@
               "ToolTip": "C:\\Users\\ryugo\\source\\repos\\nurturing\\nurturing\\nurturing\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "RelativeToolTip": "nurturing\\Form1.cs [\u30C7\u30B6\u30A4\u30F3]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T07:03:08.312Z",
-              "EditorCaption": " [\u30C7\u30B6\u30A4\u30F3]"
+              "WhenOpened": "2025-07-22T07:03:08.312Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
             }
           ]
         }
